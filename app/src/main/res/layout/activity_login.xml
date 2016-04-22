@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+   ~ 创建于2015年10月7日
+   ~By 周晨希
+-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_alignParentTop="true"
+    android:id="@+id/root"
+    android:background="#dfd8ce">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="189dp"
+    android:background="@color/nliveo_cyan_colorPrimary">
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:id="@+id/imagebackground"
+        android:src="@mipmap/img_1"
+        android:layout_alignParentTop="true"
+        android:scaleType="centerCrop"/>
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:id="@+id/ic_user"
+        android:src="@mipmap/conan"
+        android:scaleType="centerCrop"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+
+</RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView_showMessages"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="1.0"
+        android:gravity="center"
+        android:paddingTop="8dp"
+        android:id="@+id/lineLayout">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" "
+        android:id="@+id/textView2" />
+
+   <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:id="@+id/image1"
+        android:src="@mipmap/icon_user"
+        android:scaleType="centerCrop"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp" />
+
+    <com.rey.material.widget.EditText
+        android:id="@+id/account"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="请输入用户名"
+        android:text="2420122768"
+        android:textSize="11pt"
+        app:et_inputId="@+id/textfield_et_label_input"
+        app:et_supportMode="none"
+        style="@style/LightEditText"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp" />
+
+  </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" "
+        android:id="@+id/textView3" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:id="@+id/image2"
+                android:src="@mipmap/icon_password"
+                android:scaleType="centerCrop"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="25dp" />
+
+    <com.rey.material.widget.EditText
+        android:id="@+id/password"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:hint="请输入密码"
+        android:text="zcx943172"
+        android:textSize="11pt"
+        app:et_inputId="@+id/textfield_et_label_input"
+        app:et_supportMode="none"
+        style="@style/LightEditText"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp" />
+
+        </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" "
+        android:id="@+id/textView" />
+
+    <com.rey.material.widget.Button
+        android:id="@+id/loginbutton"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:layout_weight="0.4"
+        android:text="登录"
+        android:textSize="11pt"
+        style="@style/LightRaiseWaveColorButtonRippleStyle"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
+
+
+
+
+    </LinearLayout>
+
+    </ScrollView>
+
+
+
+</LinearLayout>
+
