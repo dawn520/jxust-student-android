@@ -47,7 +47,7 @@ import rx.schedulers.Schedulers;
 /**
  * Created by neokree on 16/12/14.
  */
-public class FragmentNewtask extends Fragment  implements  BGARefreshLayout.BGARefreshLayoutDelegate, BGAOnRVItemClickListener, BGAOnRVItemLongClickListener, BGAOnItemChildClickListener, BGAOnItemChildLongClickListener {
+public class FragmentFinishtask extends Fragment  implements  BGARefreshLayout.BGARefreshLayoutDelegate, BGAOnRVItemClickListener, BGAOnRVItemLongClickListener, BGAOnItemChildClickListener, BGAOnItemChildLongClickListener {
 
 
     private String siteurl = globalData.siteUrl;
@@ -81,7 +81,7 @@ public class FragmentNewtask extends Fragment  implements  BGARefreshLayout.BGAR
         stickinessRefreshViewHolder.setStickinessColor(Color.parseColor("#3dbff0"));
         stickinessRefreshViewHolder.setRotateDrawable(getResources().getDrawable(R.mipmap.bga_refresh_stickiness));
         mRefreshLayout.setRefreshViewHolder(stickinessRefreshViewHolder);
-       // mRefreshLayout.beginRefreshing();
+      //  mRefreshLayout.beginRefreshing();
         mRefreshLayout.setIsShowLoadingMoreView(false);
     }
 
@@ -115,7 +115,7 @@ public class FragmentNewtask extends Fragment  implements  BGARefreshLayout.BGAR
         daoSession = CustomApplication.getDaoSession(this.getContext()); // 获取DaoSession
         taskDao = daoSession.getTaskDao(); // 获取taskDao 可对Task进行操作
         //读取任务
-        loadTask(0,0);
+        loadTask(0,3);
 
     }
 
@@ -149,7 +149,7 @@ public class FragmentNewtask extends Fragment  implements  BGARefreshLayout.BGAR
 
         //采用retrofit2
         //读取任务
-        loadTask(1,0);
+        loadTask(1,3);
 
 
 
@@ -158,7 +158,7 @@ public class FragmentNewtask extends Fragment  implements  BGARefreshLayout.BGAR
     @Override
     public boolean onBGARefreshLayoutBeginLoadingMore(BGARefreshLayout refreshLayout) {
         //读取任务
-        loadTask(2,0);
+        loadTask(2,3);
         return true;
     }
 
@@ -167,8 +167,7 @@ public class FragmentNewtask extends Fragment  implements  BGARefreshLayout.BGAR
         Intent intent = new Intent(MainActivity.mainActivity, TaskActivity.class);
         Bundle bundle=new Bundle();
         bundle.putInt("tid",mAdapter.getItem(position).tid);
-        bundle.putInt("taskType",0);
-        bundle.putInt("position",position);
+        bundle.putInt("taskType",3);
         intent.putExtras(bundle);
         startActivity(intent);
     }
@@ -237,37 +236,6 @@ public class FragmentNewtask extends Fragment  implements  BGARefreshLayout.BGAR
                     }
                 }
 
-
-                if (Integer.parseInt(response.returnstate.toString()) == 1) {
-//                    Query<Task> updateQuery = taskDao.queryBuilder()
-//                            .where(TaskDao.Properties.Id.eq(0))
-//                            .build();
-                    if (response.returndata != null) {
-                        for (int i = 0; i < response.returndata.size(); i++) {
-                            TaskModel.returndata data = response.returndata.get(i);
-                            Log.e("xxxxxx", data.title);
-//                        updateQuery.setParameter(0,Long.parseLong(String.valueOf(data.tid)));
-//                        Task reData;
-//                        reData = updateQuery.unique();
-
-                            Task saveDate = new Task();
-                            saveDate.setId(Long.parseLong(String.valueOf(data.tid)));
-                            saveDate.setFromuid(data.fromuid);
-                            saveDate.setAuthor(data.author);
-                            saveDate.setDetail(data.detail);
-                            saveDate.setTime(data.time);
-                            saveDate.setTitle(data.title);
-                            saveDate.setContent("");
-//                        if(reData==null) {
-//                            taskDao.insert(saveDate);
-//                        }else{
-//                            taskDao.update(saveDate);
-//                        }
-                            taskDao.insertOrReplace(saveDate);
-
-                        }
-                    }
-                }
 
             }
         })

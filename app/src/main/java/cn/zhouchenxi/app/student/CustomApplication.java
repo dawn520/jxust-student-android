@@ -12,10 +12,65 @@ import com.mikepenz.materialdrawer.util.AbstractDrawerImageLoader;
 import com.mikepenz.materialdrawer.util.DrawerImageLoader;
 import com.mikepenz.materialdrawer.util.DrawerUIUtils;
 
-/**
- * Created by mikepenz on 27.03.15.
- */
+import cn.zhouchenxi.app.student.dao.DaoMaster;
+import cn.zhouchenxi.app.student.dao.DaoSession;
+
+
 public class CustomApplication extends Application {
+
+    private CustomApplication Instance;
+    private static DaoMaster daoMaster;
+    private static DaoSession daoSession;
+    //数据库名，表名是自动被创建的
+    public static final String DB_NAME = "student";
+
+    public CustomApplication getInstance() {
+
+        if (Instance == null) {
+            Instance = this;
+        }
+
+        return Instance;
+    }
+
+    /**
+     * 获取DaoMaster
+     *
+     * @param context
+     * @return
+     */
+    public static DaoMaster getDaoMaster(Context context ) {
+
+        if (daoMaster == null) {
+
+            DaoMaster.OpenHelper helper = new DaoMaster.DevOpenHelper(context, DB_NAME, null);
+
+            daoMaster = new DaoMaster(helper.getWritableDatabase());
+
+        }
+        return daoMaster;
+    }
+
+    /**
+     * 获取DaoSession对象
+     *
+     * @param context
+     * @return
+     */
+    public static DaoSession getDaoSession(Context context ) {
+
+        if (daoSession == null) {
+            if (daoMaster == null) {
+                getDaoMaster(context);
+            }
+            daoSession = daoMaster.newSession();
+        }
+
+        return daoSession;
+    }
+
+
+
 
     @Override
     public void onCreate() {

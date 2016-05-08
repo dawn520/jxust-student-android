@@ -21,7 +21,6 @@ import android.view.WindowManager;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -58,8 +57,7 @@ import cn.zhouchenxi.app.student.setting.globalData;
 
 
 public class MainActivity extends AppCompatActivity  {
-    public static MaterialDialog connectdialog;
-    public String siteurl = globalData.siteUrl;;
+    public String siteurl = globalData.siteUrl;
     public String uid = null;
     public static Activity mainActivity = null;
     private AccountHeader headerResult = null;
@@ -332,13 +330,6 @@ public class MainActivity extends AppCompatActivity  {
         result.updateBadge(4, new StringHolder(10 + ""));
 
 
-        //读取任务进度条
-        MainActivity.connectdialog = new MaterialDialog.Builder(this)
-                .content("正在读取任务数据,请稍后")
-                .progress(true,0)
-                .canceledOnTouchOutside(false)
-                .show();
-
 
 
         //个推初始化
@@ -373,68 +364,6 @@ public class MainActivity extends AppCompatActivity  {
 
     }
 
-//    @Override
-//    public void onBackPressed() {
-//        //handle the back press :D close the drawer first and if the drawer is closed close the activity
-//        if (result != null && result.isDrawerOpen()) {
-//            result.closeDrawer();
-//        } else {
-//            super.onBackPressed();
-//        }
-//    }
-
-//    //tab相关
-//
-//    @Override
-//    public void onTabSelected(MaterialTab tab) {
-//        pager.setCurrentItem(tab.getPosition());
-//    }
-//
-//    @Override
-//    public void onTabReselected(MaterialTab tab) {
-//
-//    }
-//
-//    @Override
-//    public void onTabUnselected(MaterialTab tab) {
-//
-//    }
-//
-//    private class ViewPagerAdapter extends FragmentStatePagerAdapter {
-//
-//        public ViewPagerAdapter(FragmentManager fm) {
-//            super(fm);
-//
-//        }
-//
-//        //获取tab页面
-//        public Fragment getItem(int num) {
-////            if(num == 0){ System.out.println("AAAAAAAAAA____1"); return new FragmentNewtask();}
-////            else if (num == 1){System.out.println("AAAAAAAAAA____2"); return new FragmentAccepttask();}
-////            else if (num == 2){System.out.println("AAAAAAAAAA____3"); return new FragmentSubmittask();}
-////            else if (num == 3){ System.out.println("AAAAAAAAAA____4");return new FragmentFinshtask();}
-////            else {
-//            Log.e("zcx", "zcx");
-//            return new FragmentNewtask();
-//            //  }
-//
-//
-//        }
-//
-//        //tab页面的个数
-//        @Override
-//        public int getCount() {
-//            return 4;
-//        }
-//
-//        //初始化页面标题
-//        @Override
-//        public CharSequence getPageTitle(int position) {
-//            String pagetitle[] = {"最新任务", "已接受任务", "已提交任务", "已审核任务"};
-//            return pagetitle[position];
-//        }
-//
-//    }
 
    // 检测返回键按一次后台运行不退出
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -474,9 +403,9 @@ public class MainActivity extends AppCompatActivity  {
     private void setupViewPager(ViewPager viewPager) {
         Adapter adapter = new Adapter(getSupportFragmentManager());
         adapter.addFragment(new FragmentNewtask(), "新任务");
-        adapter.addFragment(new FragmentNewtask(), "已接受");
-        adapter.addFragment(new FragmentNewtask(), "已提交");
-        adapter.addFragment(new FragmentNewtask(), "已完成");
+        adapter.addFragment(new FragmentAcceptedtask(), "已接受");
+        adapter.addFragment(new FragmentSubmitedtask(), "已提交");
+        adapter.addFragment(new FragmentFinishtask(), "已完成");
 //        adapter.addFragment(new FragmentAccepttask(), "Category 2");
 //        adapter.addFragment(new FragmentSubmittask(), "Category 3");
 //        adapter.addFragment(new FragmentFinishtask(), "Category 4");

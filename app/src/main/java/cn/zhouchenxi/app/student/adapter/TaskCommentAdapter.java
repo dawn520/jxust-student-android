@@ -11,7 +11,7 @@ import cn.bingoogolapple.androidcommon.adapter.BGAViewHolderHelper;
 import cn.bingoogolapple.swipeitemlayout.BGASwipeItemLayout;
 import cn.zhouchenxi.app.student.MainActivity;
 import cn.zhouchenxi.app.student.R;
-import cn.zhouchenxi.app.student.model.TaskModel;
+import cn.zhouchenxi.app.student.model.TaskCommentModel;
 import cn.zhouchenxi.app.student.setting.globalData;
 
 
@@ -20,11 +20,11 @@ import cn.zhouchenxi.app.student.setting.globalData;
  * 创建时间:15/5/22 16:31
  * 描述:
  */
-public class TaskAdapter extends BGARecyclerViewAdapter<TaskModel.returndata> {
+public class TaskCommentAdapter extends BGARecyclerViewAdapter<TaskCommentModel.returndata> {
     private BGASwipeItemLayout mOpenedSil;
 
-    public TaskAdapter(Context context) {
-        super(context, R.layout.task_item);
+    public TaskCommentAdapter(Context context) {
+        super(context, R.layout.task_comment_item);
     }
 
     @Override
@@ -46,11 +46,12 @@ public class TaskAdapter extends BGARecyclerViewAdapter<TaskModel.returndata> {
         viewHolderHelper.setItemChildLongClickListener(R.id.tv_item_swipe_delete);
     }
 
+
+
     @Override
-    public void fillData(BGAViewHolderHelper viewHolderHelper, int position, TaskModel.returndata model) {
+    public void fillData(BGAViewHolderHelper viewHolderHelper, int position, TaskCommentModel.returndata model) {
         closeOpenedSwipeItemLayoutWithAnim();
         viewHolderHelper
-                .setText(R.id.tv_item_swipe_title, model.title)
                 .setText(R.id.tv_item_swipe_detail, model.detail)
                 .setText(R.id.tv_item_swipe_author, model.author)
                 .setText(R.id.tv_item_swipe_time, model.time);
@@ -73,27 +74,6 @@ public class TaskAdapter extends BGARecyclerViewAdapter<TaskModel.returndata> {
                             .bitmapConfig(Bitmap.Config.RGB_565)
                             .build();
         MainActivity.mImageLoader.getInstance().displayImage(faceImageUrl, imageView, options);
-
-//        String siteurl = globalData.siteUrl;
-//
-//
-//                    String faceImageUrl = siteurl + "/index.php/Home/Client/loadAvatar?uid=49&size=big";
-//                    //创建默认的ImageLoader配置参数
-//                    if (!ImageLoader.getInstance().isInited()) {
-//                        ImageLoaderConfiguration configuration = ImageLoaderConfiguration
-//                                .createDefault(mContext);
-//                        ImageLoader.getInstance().init(configuration);
-//                    }
-//                    //显示图片的配置
-//                    DisplayImageOptions options = new DisplayImageOptions.Builder()
-//                            .showImageOnLoading(R.drawable.loading_spinner_blue)
-//                            .showImageOnFail(R.drawable.loading_spinner_blue)
-//                            .cacheInMemory(true)
-//                            .cacheOnDisk(true)
-//                            .bitmapConfig(Bitmap.Config.RGB_565)
-//                            .build();
-//        ImageLoader.getInstance().displayImage(faceImageUrl, imageView, options);
-
 
     }
 

@@ -79,8 +79,9 @@ public class LoginActivity extends AppCompatActivity {
         map = (HashMap<String, Object>) mapRead.getMsg("login",this);
         if ((map != null && !map.isEmpty())&&globalData.cidFailed==0) {
             if (map.get("user_account") != null) {
-                account = (String) map.get("user_account");
-                password = (String) map.get("user_password");
+                globalData.uid = (String) map.get("uid");
+                globalData.varifyCode = (String) map.get("varifycode");
+                globalData.userName = (String) map.get("user_name");
                 //若值为true,用户无需输入密码，直接跳转
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
@@ -170,6 +171,9 @@ public class LoginActivity extends AppCompatActivity {
                 String user_name = jsonObject1.getString("user_name");
                 String group_id = jsonObject1.getString("group_id");
                 String varifyCode = jsonObject1.getString("varifycode");
+                //存储前先赋值给全局参数
+                globalData.uid = uid;
+                globalData.varifyCode = varifyCode;
                 //登陆成功后将登录的信息存储到本地
                 HashMap<String, Object> map = new HashMap<String, Object>();
                 map.put("uid", uid);

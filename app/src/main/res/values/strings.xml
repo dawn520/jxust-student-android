@@ -47,5 +47,7 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_main2">测试</string>
+    <string name="title_activity_task_comment">TaskCommentActivity</string>
+    <string name="title_activity_sub_task">SubTaskActivity</string>
 
 </resources>
